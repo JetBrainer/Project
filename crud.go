@@ -8,7 +8,7 @@ import (
 )
 
 func InitCrud() *models.Handler{
-	host := "mongodb+srv://user1:@cluster0.mru6s.mongodb.net/test?retryWrites=true&w=majority"
+	host := "mongodb://localhost:27017"
 	dbname := "test"
 	client, err := mgo.Dial(host)
 	if err != nil{
