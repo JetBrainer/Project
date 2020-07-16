@@ -8,15 +8,13 @@ import (
 	"net/http"
 )
 func handleGetTokens(w http.ResponseWriter, r *http.Request) {
-	switch r.Method {
-	case "POST":
-		var account models.Account
-		var tokens models.JWTPackage
+	var account models.Account
+	var tokens models.JWTPackage
 
-		json.NewDecoder(r.Body).Decode(&account)
-		tokens.Generate(account)
-		respondWithJson(w,http.StatusOK,tokens)
-	}
+	json.NewDecoder(r.Body).Decode(&account)
+	tokens.Generate(account)
+	respondWithJson(w,http.StatusOK,tokens)
+
 	c, err := r.Cookie("session")
 	if err != nil{
 		http.Redirect(w,r,"/", http.StatusSeeOther)
