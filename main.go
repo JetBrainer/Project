@@ -10,13 +10,13 @@ import (
 func main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/", handleUuid).Methods("POST")
-	r.HandleFunc("/", handleUuid).Methods("GET")
+	r.HandleFunc("/us", handleUuid).Methods("POST")
+	r.HandleFunc("/us", handleUuid).Methods("GET")
 	r.HandleFunc("/getTokens",handleGetTokens).Methods("POST")
 	r.HandleFunc("/getTokens",handleGetTokens).Methods("GET")
 	fmt.Println("Listening on :8080 port")
 
-	r.HandleFunc("/us", InitCrud().ListUsers).Methods("GET")
+	r.HandleFunc("/", InitCrud().ListUsers).Methods("GET")
 	r.HandleFunc("/users", InitCrud().ListUsers).Methods("GET")
 	r.HandleFunc("/users/new", InitCrud().AddForm).Methods("GET")
 	r.HandleFunc("/users/new", InitCrud().AddUsers).Methods("POST")
